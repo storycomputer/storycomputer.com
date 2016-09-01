@@ -1,161 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Copyright 2015 Stanislav Senotrusov -->
+    <!-- Copyright 2015-2016 Stanislav Senotrusov -->
     <meta charset="utf-8">
     <title>Story Computer</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="An open source software &amp; online services for computer games &amp; digital media development &amp; distribution, a social network, a tool to learn CS &amp; programming">
     <style>
-body {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  background: #888;
-}
+      body {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        background: #888;
+      }
 
-#canvas {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-}
+      div {
+        font-family: Menlo, 'DejaVu Sans Mono', 'Lucida Console', 'Liberation Mono', 'Courier New', monospace;
+        font-size: 17px;
+        line-height: 40px;
+        letter-spacing: 2px;
+      }
 
-#container {
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  position: relative;
+      #footer {
+        margin-top: 50px;
+        font-size: 15px;
+        line-height: 22px;
+        letter-spacing: 2px;
+      }
 
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+      #footer p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
 
-  -webkit-box-align: center;
-     -ms-flex-align: center;
-        align-items: center;
+      #canvas {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
 
-   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-    justify-content: center;
-}
+      #container {
+        z-index: 1;
+        position: relative;
+        width: 85%;
+        margin: 40px auto 40px auto;
+      }
 
-#splash {
-  font-size: 7vw;
-  line-height: 1;
-  letter-spacing: 0.5vw;
-  font-weight: bold;
+      #content {
+        background: #fbf2e3;
+        padding: 23px 40px 24px 40px;
+        box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.5);
+      }
 
-  color: white;
-  text-align: center;
-}
-
-#uc {
-  font-size: 3vw;
-  line-height: 4;
-  letter-spacing: 0.5vw;
-  font-weight: bold;
-  text-align: center;
-}
-
-#footer {
-  z-index: 2;
-  position: absolute;
-  bottom: 1rem;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-
-div {
-  font-family: Menlo, 'DejaVu Sans Mono', 'Lucida Console', 'Liberation Mono', 'Courier New', monospace;
-  font-size: 17px;
-  line-height: 22px;
-  letter-spacing: 4px;
-}
+      @media only screen and (min-width: 768px) {
+        #container {
+          width: 70%;
+          margin: 75px auto 75px auto;
+        }
+      }
     </style>
   </head>
-<body>
-<canvas id=canvas></canvas>
-<div id=container>
-  <div id=splash>
-    Story Computer
-    <div id=uc>Under construction!</div>
-  </div>
-</div>
-<div id=footer>
-  Story Computer™ is a trademark of Stanislav Senotrusov
-</div>
-<script>
-function draw(){
-  var screenWidth = canvas.clientWidth
-  var screenHeight = canvas.clientHeight
-  var devicePixelRatio = window.devicePixelRatio || 1
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="container">
+      <div id="content">
+        <h1>Story Computer</h1>
+        <p>Story Computer™ is an open source software and online services for the development and distribution of computer games and other digital media, a social network and online communities to help participants to share their works and use works of others, and an educational tool for learning computer science and programming.</p>
+        <div id="footer">
+          <p>Story Computer is a trademark of Stanislav Senotrusov.</p>
+          <p>Copyright 2015-2016 Stanislav Senotrusov.</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      function draw(){
+        var screenWidth = canvas.clientWidth
+        var screenHeight = canvas.clientHeight
+        var devicePixelRatio = window.devicePixelRatio || 1
 
-  if (canvas.width != screenWidth || canvas.height != screenHeight) {
-    canvas.width = Math.floor(screenWidth * devicePixelRatio)
-    canvas.height = Math.floor(screenHeight * devicePixelRatio)
-  }
+        if (canvas.width != screenWidth || canvas.height != screenHeight) {
+          canvas.width = Math.floor(screenWidth * devicePixelRatio)
+          canvas.height = Math.floor(screenHeight * devicePixelRatio)
+        }
 
-  var context = canvas.getContext('2d')
+        var context = canvas.getContext('2d')
 
-  var relyOnImageSmoothing = true
+        var relyOnImageSmoothing = true
 
-  if (typeof context.imageSmoothingEnabled === 'boolean') {
-    context.imageSmoothingEnabled = false
-  } else if (typeof context.webkitImageSmoothingEnabled === 'boolean') {
-    context.webkitImageSmoothingEnabled = false
-  } else if (typeof context.mozImageSmoothingEnabled === 'boolean') {
-    context.mozImageSmoothingEnabled = false
-  } else if (typeof context.msImageSmoothingEnabled === 'boolean') {
-    context.msImageSmoothingEnabled = false
-  } else {
-    relyOnImageSmoothing = false
-  }
+        if (typeof context.imageSmoothingEnabled === 'boolean') {
+          context.imageSmoothingEnabled = false
+        } else if (typeof context.webkitImageSmoothingEnabled === 'boolean') {
+          context.webkitImageSmoothingEnabled = false
+        } else if (typeof context.mozImageSmoothingEnabled === 'boolean') {
+          context.mozImageSmoothingEnabled = false
+        } else if (typeof context.msImageSmoothingEnabled === 'boolean') {
+          context.msImageSmoothingEnabled = false
+        } else {
+          relyOnImageSmoothing = false
+        }
 
-  var pixelScale = 144
+        var pixelScale = Math.ceil(screenWidth / Math.floor(screenWidth / (8 * (Math.round(15 * Math.random()) + 3))))
 
-  pixelsCanvas = document.createElement('canvas')
+        pixelsCanvas = document.createElement('canvas')
 
-  pixelsCanvas.width = Math.ceil(screenWidth * devicePixelRatio / pixelScale)
-  pixelsCanvas.height = Math.ceil(screenHeight * devicePixelRatio / pixelScale)
+        pixelsCanvas.width = Math.ceil(screenWidth * devicePixelRatio / pixelScale)
+        pixelsCanvas.height = Math.ceil(screenHeight * devicePixelRatio / pixelScale)
 
-  pixelsContext = pixelsCanvas.getContext('2d')
+        pixelsContext = pixelsCanvas.getContext('2d')
 
-  pixelsData = pixelsContext.getImageData(0, 0, pixelsCanvas.width, pixelsCanvas.height)
+        pixelsData = pixelsContext.getImageData(0, 0, pixelsCanvas.width, pixelsCanvas.height)
 
-  for (var i = 0; i < pixelsData.data.length; i += 4) {
-    pixelsData.data[i]     = Math.round(255 * Math.random())
-    pixelsData.data[i + 1] = Math.round(255 * Math.random())
-    pixelsData.data[i + 2] = Math.round(255 * Math.random())
-    pixelsData.data[i + 3] = 255
-  }
+        for (var i = 0; i < pixelsData.data.length; i += 4) {
+          pixelsData.data[i]     = Math.round(255 * Math.random())
+          pixelsData.data[i + 1] = Math.round(255 * Math.random())
+          pixelsData.data[i + 2] = Math.round(255 * Math.random())
+          pixelsData.data[i + 3] = 255
+        }
 
-  pixelsContext.putImageData(pixelsData, 0, 0)
+        pixelsContext.putImageData(pixelsData, 0, 0)
 
-  if (relyOnImageSmoothing) {
-    context.drawImage(pixelsCanvas,
-      0, 0, pixelsCanvas.width, pixelsCanvas.height,
-      0, 0, pixelsCanvas.width * pixelScale, pixelsCanvas.height * pixelScale)
-  } else {
-    var data = pixelsData.data
-    var scale = pixelScale
+        if (relyOnImageSmoothing) {
+          context.drawImage(pixelsCanvas,
+            0, 0, pixelsCanvas.width, pixelsCanvas.height,
+            0, 0, pixelsCanvas.width * pixelScale, pixelsCanvas.height * pixelScale)
+        } else {
+          var data = pixelsData.data
+          var scale = pixelScale
 
-    for (var x = 0, width = pixelsData.width; x < width; x++)
-      for (var y = 0, height = pixelsData.height; y < height; y++) {
-        var i = (y * width + x) * 4
-        context.fillStyle =
-          `rgba(${data[i]},${data[i + 1]},${data[i + 2]},${data[i + 3] / 255})`
+          for (var x = 0, width = pixelsData.width; x < width; x++)
+            for (var y = 0, height = pixelsData.height; y < height; y++) {
+              var i = (y * width + x) * 4
+              context.fillStyle =
+                `rgba(${data[i]},${data[i + 1]},${data[i + 2]},${data[i + 3] / 255})`
 
-        context.fillRect(0 + x * scale, 0 + y * scale, scale, scale)
+              context.fillRect(0 + x * scale, 0 + y * scale, scale, scale)
+            }
+        }
       }
-  }
-}
 
-draw()
+      draw()
 
-window.setInterval(draw, 5000)
-</script>
-</body>
+      window.setInterval(draw, 900)
+    </script>
+  </body>
 </html>
