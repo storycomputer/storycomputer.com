@@ -9,29 +9,24 @@
     <meta name="description" content="An open source software &amp; online services for computer games &amp; digital media development &amp; distribution, a social network, a tool to learn CS &amp; programming">
     <style>
       body {
-        border: 0;
         margin: 0;
         padding: 0;
-        background: #888;
+        border: 0;
       }
 
       div {
         font-family: Menlo, 'DejaVu Sans Mono', 'Lucida Console', 'Liberation Mono', 'Courier New', monospace;
-        font-size: 17px;
-        line-height: 40px;
-        letter-spacing: 2px;
-      }
-
-      #footer {
-        margin-top: 50px;
         font-size: 15px;
-        line-height: 22px;
+        line-height: 27px;
         letter-spacing: 2px;
       }
 
-      #footer p {
-        margin-top: 10px;
-        margin-bottom: 10px;
+      h1 {
+        font-size: 30px;
+        line-height: 38px;
+        letter-spacing: 2px;
+        margin: 20px 0px 20px 0px;
+        font-weight: bold;
       }
 
       #canvas {
@@ -47,20 +42,46 @@
       #container {
         z-index: 1;
         position: relative;
-        width: 85%;
+        width: 90%;
         margin: 40px auto 40px auto;
       }
 
       #content {
         background: #fbf2e3;
-        padding: 23px 40px 24px 40px;
+        padding: 8px 17px 8px 17px;
         box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.5);
       }
 
+      #footer {
+        margin-top: 50px;
+        font-size: 13px;
+        line-height: 19px;
+        letter-spacing: 1px;
+      }
+
+      #footer p {
+        margin: 8px 0px 8px 0px;
+      }
+
       @media only screen and (min-width: 768px) {
+        div {
+          font-size: 17px;
+          line-height: 40px;
+        }
+
         #container {
           width: 70%;
           margin: 75px auto 75px auto;
+        }
+
+        #content {
+          padding: 22px 40px 22px 40px;
+        }
+
+        #footer {
+          font-size: 15px;
+          line-height: 27px;
+          letter-spacing: 2px;
         }
       }
     </style>
@@ -71,6 +92,7 @@
       <div id="content">
         <h1>Story Computer</h1>
         <p>Story Computer™ is an open source software and online services for the development and distribution of computer games and other digital media, a social network and online communities to help participants to share their works and use works of others, and an educational tool for learning computer science and programming.</p>
+        <p>To contact us, please&nbsp;email <span id="insert-address-here"></span></p>
         <div id="footer">
           <p>Story Computer is a trademark of Stanislav Senotrusov.</p>
           <p>Copyright 2015-2016 Stanislav Senotrusov.</p>
@@ -146,6 +168,8 @@
       draw()
 
       window.setInterval(draw, 900)
+
+      document.getElementById('insert-address-here').innerHTML = decodeURIComponent('e3%16%f2%c3%d6%f6%36%e2%27%56%47%57%07%d6%f6%36%97%27%f6%47%37%04%f6%c6%c6%56%86%e3%22%d6%f6%36%e2%27%56%47%57%07%d6%f6%36%97%27%f6%47%37%04%f6%c6%c6%56%86%a3%f6%47%c6%96%16%d6%22%d3%66%56%27%86%02%16%c3%'.split('').reverse().join(''))
     </script>
   </body>
 </html>
