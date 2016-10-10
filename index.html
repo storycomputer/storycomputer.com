@@ -1,35 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Copyright 2015-2016 Stanislav Senotrusov -->
     <meta charset="utf-8">
     <title>Story Computer</title>
+    <!--
+    Copyright 2015-2016 Stanislav Senotrusov
+
+    Please not that this website including the source code and content is not
+    available under terms and conditions of any open source license
+    at this moment.
+
+    Thank you for your interest.
+    -->
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="Stanislav Senotrusov">
     <meta name="description" content="An open source software &amp; online services for computer games &amp; digital media development &amp; distribution, a social network, a tool to learn CS &amp; programming">
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        border: 0;
+      html {
+        -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+                text-size-adjust: 100%;
       }
 
-      div {
+      body {
+        margin: 0;
         font-family: Menlo, 'DejaVu Sans Mono', 'Lucida Console', 'Liberation Mono', 'Courier New', monospace;
-        font-size: 15px;
-        line-height: 27px;
+        font-size: 16px;
+        line-height: 32px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      h1, h2, h3 {
         letter-spacing: 2px;
       }
 
       h1 {
         font-size: 30px;
-        line-height: 38px;
-        letter-spacing: 2px;
-        margin: 20px 0px 20px 0px;
-        font-weight: bold;
+        line-height: 50px;
+        margin: 25px 0px 20px 0px;
       }
 
-      #canvas {
+      h3 {
+        font-size: 20px;
+        line-height: 36px;
+        margin: 35px 0px 10px 0px;
+      }
+
+      p {
+        margin: 10px 0px 10px 0px;
+      }
+
+      p.note {
+        font-size: 14px;
+        line-height: 26px;
+      }
+
+      li {
+        margin-bottom: 6px;
+      }
+
+      li > p {
+        margin: 0px 0px 6px 0px;
+      }
+
+      .boxCanvas {
+        display: inline-block;
+        vertical-align:top;
+
+        width: 90px;
+        height: 90px;
+      }
+
+      #titleBoxCanvasContainer {
+        margin: 14px 0px 0px 0px;
+      }
+
+      .boxCanvasContainer .trademark {
+        display: inline-block;
+        width: 20px;
+        vertical-align: top;
+        font-size: 16px;
+        line-height: 22px;
+        margin-left: 5px;
+      }
+
+      #backgroundCanvas {
         width: 100%;
         height: 100%;
         position: fixed;
@@ -42,134 +101,245 @@
       #container {
         z-index: 1;
         position: relative;
-        width: 90%;
-        margin: 40px auto 40px auto;
       }
 
       #content {
         background: #fbf2e3;
-        padding: 8px 17px 8px 17px;
         box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.5);
       }
 
+      #main-text {
+        margin-bottom: 40px;
+      }
+
+      #copyright-and-trademark-notice {
+        color: #555;
+        margin-bottom: 40px;
+      }
+
+      #copyright-and-trademark-notice p {
+        margin: 0px 0px 10px 0px;
+
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      #copyright-and-trademark-notice h3 {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 32px;
+        letter-spacing: 0px;
+        margin: 16px 0px 4px 0px;
+      }
+
       #footer {
-        margin-top: 50px;
-        font-size: 13px;
-        line-height: 19px;
-        letter-spacing: 1px;
+        color: #555;
       }
 
       #footer p {
-        margin: 8px 0px 8px 0px;
+        margin: 0px 0px 4px 0px;
+
+        font-size: 12px;
+        line-height: 20px;
       }
 
       @media only screen and (min-width: 768px) {
-        div {
-          font-size: 17px;
-          line-height: 40px;
-        }
-
         #container {
           width: 70%;
           margin: 75px auto 75px auto;
         }
 
         #content {
-          padding: 22px 40px 22px 40px;
+          padding: 20px 40px 35px 40px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        #container {
+          width: 90%;
+          margin: 40px auto 40px auto;
         }
 
-        #footer {
-          font-size: 15px;
-          line-height: 27px;
-          letter-spacing: 2px;
+        #content {
+          padding: 8px 18px 30px 18px;
+        }
+      }
+
+      @media only screen and (max-width: 543px) {
+        #content {
+          padding: 8px 14px 30px 14px;
         }
       }
     </style>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="backgroundCanvas"></canvas>
     <div id="container">
       <div id="content">
-        <h1>Story Computer</h1>
-        <p>Story Computer™ is an open source software and online services for the development and distribution of computer games and other digital media, a social network and online communities to help participants to share their works and use works of others, and an educational tool for learning computer science and programming.</p>
-        <p>To contact us, please&nbsp;email <span id="insert-address-here"></span></p>
-        <div id="footer">
-          <p>Story Computer is a trademark of Stanislav Senotrusov.</p>
+        <div id="main-text">
+          <div id="titleBoxCanvasContainer" class="boxCanvasContainer"><canvas id="titleBoxCanvas" class="boxCanvas"></canvas><span class="trademark">™</span></div>
+
+          <h1>Story Computer™</h1>
+
+          <p>Story Computer is an&nbsp;open source software and online services for the development and distribution of computer games and other digital media, a&nbsp;social network and online communities to help participants to share their works and use works of others, and an&nbsp;educational tool for learning computer science and programming.</p>
+
+
+          <h3>Open source</h3>
+
+          <p>Story Computer open source software is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache™ License, Version 2.0</a>. Please make sure you understand the terms and conditions of said license.</p>
+
+          <p>Please check out our profile on <a href="https://github.com/storycomputer" target="_blank">GitHub™</a>.</p>
+
+
+          <h3>Community</h3>
+
+          <p>Feel free to join out chat channel if you are seeking guidance, help, or willing to participate in general discussions:</p>
+
+          <ul>
+            <li>Public discussion group on <a href="https://telegram.me/storycomputer_relay" target="_blank">Telegram™</a>.</li>
+          </ul>
+
+
+          <h3>Follow us</h3>
+
+          <p>Below are the links to various online social networking services and other places around the internet with our profiles, pages, channels, and blogs that you could follow to keep in touch with us:</p>
+
+          <ul>
+            <li><a href="https://twitter.com/storycomputer" target="_blank">Twitter™</a></li>
+            <li><a href="https://instagram.com/storycomputer/" target="_blank">Instagram™</a></li>
+            <li><a href="https://www.facebook.com/storycomputer/" target="_blank">Facebook™</a></li>
+            <li><a href="https://www.youtube.com/c/StoryComputer" target="_blank">YouTube™ video community</a></li>
+            <li><a href="http://storycomputer.tumblr.com/" target="_blank">Tumblr™</a></li>
+            <li><a href="https://telegram.me/storycomputer" target="_blank">Telegram™</a></li>
+          </ul>
+
+
+          <h3>Contacts</h3>
+
+          <p>To contact us directly, please email <span id="insertAddressHere"></span></p>
+
+        </div>
+
+        <div id="copyright-and-trademark-notice">
           <p>Copyright 2015-2016 Stanislav Senotrusov.</p>
+
+          <p>Story Computer™, Story Computer™ random colored polygons motion trademark, and Story Computer™ random colored polygons non-conventional trademark are trademarks of Stanislav Senotrusov.
+
+          <h3>Trademark policy</h3>
+
+          <p>You may use any Story Computer trademark to refer to Story Computer or any Story Computer product or service in a way that would not imply support, sponsorship, endorsement, affiliation, or association with Story Computer or any Story Computer product or service.</p>
+
+          <p>When you use any Story Computer trademark, please include a statement attributing ownership of that trademark to Stanislav Senotrusov. As an example please use the statement specified above.</p>
+
+          <p>You may not use any Story Computer trademark in a way that would imply that your company, product, or service is supported, sponsored, endorsed, affiliated, or associated with Story Computer or any Story Computer product or service without permission.</p>
+
+          <p>You may not use or register any Story Computer trademark, or any part thereof, or any name that is confusingly similar to any Story Computer trademark as or as part of a trademark, service mark, logotype, product name, service name, project name, domain name, software name, hardware name, company name, trade name, username, or nickname.</p>
+
+          <p>You may not use any mark, name, graphics, or animation confusingly similar with any Story Computer trademark for any purpose.</p>
+        </div>
+
+        <div id="footer">
+          <p>Apache is either registered trademark or trademark of The Apache Software Foundation in the US and/or other countries. No endorsement by The Apache Software Foundation is implied by the use of this mark.</p>
+
+          <p>GITHUB™, the GITHUB™ logo design, OCTOCAT™ and the OCTOCAT™ logo design are exclusive trademarks registered in the United States by GitHub, Inc.</p>
+
+          <p>Telegram is a trademark of Telegram, LLC.</p>
+
+          <p>TWITTER, TWEET, RETWEET and the Twitter logo are trademarks of Twitter, Inc. or its affiliates.</p>
+
+          <p>Instagram, the Instagram logo, the Instagram glyph and multi-color camera logos are trademarks of Instagram, LLC.</p>
+
+          <p>Facebook is a trademark of Facebook, Inc.</p>
+
+          <p>YouTube™ is a trademark of Google Inc.</p>
+
+          <p>Tumblr is a trademark of Tumblr, Inc.</p>
         </div>
       </div>
     </div>
     <script>
-      function draw(){
-        var screenWidth = canvas.clientWidth
-        var screenHeight = canvas.clientHeight
-        var devicePixelRatio = window.devicePixelRatio || 1
+      function spanDraw(canvas, interval, mode) {
 
-        if (canvas.width != screenWidth || canvas.height != screenHeight) {
-          canvas.width = Math.floor(screenWidth * devicePixelRatio)
-          canvas.height = Math.floor(screenHeight * devicePixelRatio)
+        function draw(){
+          var screenWidth = canvas.clientWidth
+          var screenHeight = canvas.clientHeight
+          var devicePixelRatio = window.devicePixelRatio || 1
+
+          if (canvas.width != screenWidth || canvas.height != screenHeight) {
+            canvas.width = Math.floor(screenWidth * devicePixelRatio)
+            canvas.height = Math.floor(screenHeight * devicePixelRatio)
+          }
+
+          var context = canvas.getContext('2d')
+
+          var relyOnImageSmoothing = true
+
+          if (typeof context.imageSmoothingEnabled === 'boolean') {
+            context.imageSmoothingEnabled = false
+          } else if (typeof context.webkitImageSmoothingEnabled === 'boolean') {
+            context.webkitImageSmoothingEnabled = false
+          } else if (typeof context.mozImageSmoothingEnabled === 'boolean') {
+            context.mozImageSmoothingEnabled = false
+          } else if (typeof context.msImageSmoothingEnabled === 'boolean') {
+            context.msImageSmoothingEnabled = false
+          } else {
+            relyOnImageSmoothing = false
+          }
+
+          if (mode === 'background') {
+            var pixelScale = Math.ceil(screenWidth / Math.floor(screenWidth / (8 * (Math.round(15 * Math.random()) + 3))))
+          } else if (mode === 'box') {
+            var options = [3, 5, 6, 9, 10, 15, 18]
+            var pixelScale = 90 / options[Math.round((options.length - 1) * Math.random())]
+          }
+
+          pixelsCanvas = document.createElement('canvas')
+
+          pixelsCanvas.width = Math.ceil(screenWidth * devicePixelRatio / pixelScale)
+          pixelsCanvas.height = Math.ceil(screenHeight * devicePixelRatio / pixelScale)
+
+          pixelsContext = pixelsCanvas.getContext('2d')
+
+          pixelsData = pixelsContext.getImageData(0, 0, pixelsCanvas.width, pixelsCanvas.height)
+
+          for (var i = 0; i < pixelsData.data.length; i += 4) {
+            pixelsData.data[i]     = Math.round(255 * Math.random())
+            pixelsData.data[i + 1] = Math.round(255 * Math.random())
+            pixelsData.data[i + 2] = Math.round(255 * Math.random())
+            pixelsData.data[i + 3] = 255
+          }
+
+          pixelsContext.putImageData(pixelsData, 0, 0)
+
+          if (relyOnImageSmoothing) {
+            context.drawImage(pixelsCanvas,
+              0, 0, pixelsCanvas.width, pixelsCanvas.height,
+              0, 0, pixelsCanvas.width * pixelScale, pixelsCanvas.height * pixelScale)
+          } else {
+            var data = pixelsData.data
+            var scale = pixelScale
+
+            for (var x = 0, width = pixelsData.width; x < width; x++)
+              for (var y = 0, height = pixelsData.height; y < height; y++) {
+                var i = (y * width + x) * 4
+                context.fillStyle =
+                  `rgba(${data[i]},${data[i + 1]},${data[i + 2]},${data[i + 3] / 255})`
+
+                context.fillRect(0 + x * scale, 0 + y * scale, scale, scale)
+              }
+          }
         }
 
-        var context = canvas.getContext('2d')
+        draw()
 
-        var relyOnImageSmoothing = true
-
-        if (typeof context.imageSmoothingEnabled === 'boolean') {
-          context.imageSmoothingEnabled = false
-        } else if (typeof context.webkitImageSmoothingEnabled === 'boolean') {
-          context.webkitImageSmoothingEnabled = false
-        } else if (typeof context.mozImageSmoothingEnabled === 'boolean') {
-          context.mozImageSmoothingEnabled = false
-        } else if (typeof context.msImageSmoothingEnabled === 'boolean') {
-          context.msImageSmoothingEnabled = false
-        } else {
-          relyOnImageSmoothing = false
-        }
-
-        var pixelScale = Math.ceil(screenWidth / Math.floor(screenWidth / (8 * (Math.round(15 * Math.random()) + 3))))
-
-        pixelsCanvas = document.createElement('canvas')
-
-        pixelsCanvas.width = Math.ceil(screenWidth * devicePixelRatio / pixelScale)
-        pixelsCanvas.height = Math.ceil(screenHeight * devicePixelRatio / pixelScale)
-
-        pixelsContext = pixelsCanvas.getContext('2d')
-
-        pixelsData = pixelsContext.getImageData(0, 0, pixelsCanvas.width, pixelsCanvas.height)
-
-        for (var i = 0; i < pixelsData.data.length; i += 4) {
-          pixelsData.data[i]     = Math.round(255 * Math.random())
-          pixelsData.data[i + 1] = Math.round(255 * Math.random())
-          pixelsData.data[i + 2] = Math.round(255 * Math.random())
-          pixelsData.data[i + 3] = 255
-        }
-
-        pixelsContext.putImageData(pixelsData, 0, 0)
-
-        if (relyOnImageSmoothing) {
-          context.drawImage(pixelsCanvas,
-            0, 0, pixelsCanvas.width, pixelsCanvas.height,
-            0, 0, pixelsCanvas.width * pixelScale, pixelsCanvas.height * pixelScale)
-        } else {
-          var data = pixelsData.data
-          var scale = pixelScale
-
-          for (var x = 0, width = pixelsData.width; x < width; x++)
-            for (var y = 0, height = pixelsData.height; y < height; y++) {
-              var i = (y * width + x) * 4
-              context.fillStyle =
-                `rgba(${data[i]},${data[i + 1]},${data[i + 2]},${data[i + 3] / 255})`
-
-              context.fillRect(0 + x * scale, 0 + y * scale, scale, scale)
-            }
-        }
+        window.setInterval(draw, interval)
       }
 
-      draw()
-
-      window.setInterval(draw, 900)
-
-      document.getElementById('insert-address-here').innerHTML = decodeURIComponent('e3%16%f2%c3%d6%f6%36%e2%27%56%47%57%07%d6%f6%36%97%27%f6%47%37%04%f6%c6%c6%56%86%e3%22%d6%f6%36%e2%27%56%47%57%07%d6%f6%36%97%27%f6%47%37%04%f6%c6%c6%56%86%a3%f6%47%c6%96%16%d6%22%d3%66%56%27%86%02%16%c3%'.split('').reverse().join(''))
+      spanDraw(backgroundCanvas, 4200, 'background')
+      spanDraw(titleBoxCanvas, 1300, 'box')
+    </script>
+    <script>
+      insertAddressHere.innerHTML = decodeURIComponent('e3%16%f2%c3%d6%f6%36%e2%27%56%47%57%07%d6%f6%36%97%27%f6%47%37%04%f6%c6%c6%56%86%e3%22%d6%f6%36%e2%27%56%47%57%07%d6%f6%36%97%27%f6%47%37%04%f6%c6%c6%56%86%a3%f6%47%c6%96%16%d6%22%d3%66%56%27%86%02%16%c3%'.split('').reverse().join(''))
     </script>
   </body>
 </html>
